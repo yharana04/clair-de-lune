@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Clair de Lune 🌙</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- PWA -->
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16.png">
+    <link rel="apple-touch-icon" href="./images/icon-180.png">
+    <meta name="theme-color" content="#2D4A22">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Clair de Lune">
+</head>
+<body>
+
+<main id="application">
+
+    <!-- =========================
+         ACCUEIL
+    ========================== -->
+    <section id="ecran-accueil" class="ecran actif">
+        <div class="accueil-content">
+            <div class="accueil-logo-wrap">
+                <img src="./images/logo.png" alt="Clair de Lune" style="width:100%; height:100%; object-fit:contain; border-radius:24px;">
+            </div>
+            <h1>Clair de Lune</h1>
+            <p class="sous-titre">Le Conteur des Loups-Garous</p>
+            <button class="btn btn-principal" onclick="allerVers('ecran-joueurs')">Nouvelle Partie</button>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         JOUEURS
+    ========================== -->
+    <section id="ecran-joueurs" class="ecran">
+        <div class="entete">
+            <button class="btn btn-retour" onclick="allerVers('ecran-accueil')">← Retour</button>
+            <h2>Les Joueurs</h2>
+        </div>
+        <div class="contenu">
+            <div class="ajout-joueur">
+                <input type="text" id="input-joueur" placeholder="Nom du joueur..." maxlength="20"
+                       onkeydown="if(event.key==='Enter') ajouterJoueur()">
+                <button class="btn btn-ajouter" onclick="ajouterJoueur()">+</button>
+            </div>
+            <div id="profils-rapides"></div>
+            <div id="liste-joueurs"></div>
+            <div class="info-joueurs" id="info-joueurs"></div>
+            <button id="btn-suivant-roles" class="btn btn-principal" onclick="allerVers('ecran-roles')" style="display:none">
+                Choisir les Rôles →
+            </button>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         ROLES
+    ========================== -->
+    <section id="ecran-roles" class="ecran">
+        <div class="entete">
+            <button class="btn btn-retour" onclick="allerVers('ecran-joueurs')">← Retour</button>
+            <h2>Les Rôles</h2>
+        </div>
+        <div class="contenu">
+            <div class="mode-selection">
+                <button id="btn-mode-manuel" class="btn btn-mode actif" onclick="changerMode('manuel')">✋ Manuel</button>
+                <button id="btn-mode-ia" class="btn btn-mode" onclick="changerMode('ia')">🤖 Suggestion IA</button>
+            </div>
+            <div id="panneau-manuel">
+                <div class="categories-roles" id="categories-roles"></div>
+            </div>
+            <div id="panneau-ia" style="display:none">
+                <div id="suggestion-ia" class="suggestion-ia"></div>
+                <button class="btn btn-secondaire" onclick="genererSuggestionIA()">🔄 Nouvelle suggestion</button>
+            </div>
+            <div id="resume-roles" class="resume-roles"></div>
+            <button id="btn-suivant-attribution" class="btn btn-principal" onclick="allerVers('ecran-attribution')" style="display:none">
+                Distribuer les Rôles →
+            </button>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         ATTRIBUTION
+    ========================== -->
+    <section id="ecran-attribution" class="ecran">
+        <div class="entete">
+            <button class="btn btn-retour" onclick="allerVers('ecran-roles')">← Retour</button>
+            <h2>Distribution</h2>
+        </div>
+        <div class="contenu">
+            <p class="instruction">Passez le téléphone à chaque joueur pour qu'il découvre son rôle en secret.</p>
+            <div id="attribution-joueur"></div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         PARTIE (JEU)
+    ========================== -->
+    <section id="ecran-jeu" class="ecran">
+
+        <!-- EN-TÊTE FIXE -->
+        <div class="entete">
+            <button class="btn-oeil" onclick="afficherTousLesRoles()">👁️</button>
+            <h2 id="titre-phase">🌙 Nuit 1</h2>
+            <div style="display:flex; gap:0.4rem; align-items:center; flex-shrink:0;">
+                <button class="btn-fiches" onclick="afficherFichesRoles()">📖</button>
+                <div class="compteur-tour" id="compteur-tour">0 vivants</div>
+            </div>
+        </div>
+
+        <!-- CONTENU SCROLLABLE -->
+        <div class="contenu">
+
+            <!-- JOURNAL GRIMOIRE (tablette/PC) -->
+            <div class="journal-grimoire" id="journal-grimoire">
+                <div class="journal-grimoire-titre">📖 Journal du Conteur</div>
+                <div class="grimoire-timeline" id="grimoire-timeline"></div>
+            </div>
+
+            <!-- 1. ACTION EN COURS -->
+            <div id="panneau-phase"></div>
+
+            <!-- 2. JOUEURS VIVANTS -->
+            <div class="joueurs-vivants" id="joueurs-vivants"></div>
+
+            <!-- 3. BOUTONS D'ACTION -->
+            <div class="actions-jeu" id="actions-jeu"></div>
+
+            <!-- 4. JOURNAL PLIABLE (mobile) -->
+            <div class="journal-partie" id="journal-partie">
+                <div class="journal-header" onclick="toggleJournal()">
+                    <span class="journal-header-titre">📜 Journal de la partie</span>
+                    <span class="journal-header-chevron" id="journal-chevron">▼</span>
+                </div>
+                <div class="journal-body" id="journal-body">
+                    <div style="color:var(--c-beige); font-style:italic; font-size:0.85rem; padding:0.5rem;">
+                        Aucun événement pour l'instant.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         MODALE ROLES (Œil MJ)
+    ========================== -->
+    <div id="modale-roles" class="modale" style="display:none">
+        <div class="modale-contenu">
+            <div class="modale-entete">
+                <h3>👁️ Tous les rôles</h3>
+                <button class="btn-fermer-modale" onclick="fermerModaleRoles()">✕</button>
+            </div>
+            <div id="liste-tous-roles"></div>
+        </div>
+    </div>
+
+
+    <!-- =========================
+         MODALE FICHES DES RÔLES
+    ========================== -->
+    <div id="modale-fiches" class="modale" style="display:none">
+        <div class="modale-contenu modale-fiches-contenu">
+            <div class="modale-entete">
+                <h3>📖 Fiches des rôles</h3>
+                <button class="btn-fermer-modale" onclick="fermerModaleFiches()">✕</button>
+            </div>
+            <div id="liste-fiches-roles" class="liste-fiches-roles"></div>
+        </div>
+    </div>
+
+
+    <!-- =========================
+         TIRAGE SECRET COMÉDIEN
+    ========================== -->
+    <div id="ecran-tirage-original" class="ecran-tirage" style="display:none">
+        <div class="tirage-contenu">
+            <div class="tirage-emoji">🎭</div>
+            <h2 class="tirage-titre">Tirage de l'Original</h2>
+            <p class="tirage-texte">Le Comédien imitera...</p>
+            <div id="tirage-nom" class="tirage-nom">---</div>
+            <button class="btn btn-principal" onclick="fermerTirageEtLancerJeu()">Continuer →</button>
+        </div>
+    </div>
+
+</main>
+
+<script src="./core.js"></script>
+<script src="./game.js"></script>
+<script src="./roles-nuit.js"></script>
+<script src="./roles-speciaux.js"></script>
+<script src="./fiches.js"></script>
+
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js')
+            .catch(err => console.log('SW non enregistré:', err));
+    });
+}
+</script>
+
+</body>
+</html>

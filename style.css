@@ -1,0 +1,3507 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* ========================================================
+       PALETTE DE COULEURS - THÈME MÉDIÉVAL/FORÊT
+       ======================================================== */
+    
+    /* Couleurs principales */
+    --c-vert-foret: #2D4A22;
+    --c-vert-moyen: #3D6B2F;
+    --c-vert-clair: #5C8B4A;
+    --c-vert-fonce: #1A2F12;
+    
+    /* Couleurs de camp */
+    --c-loup: #8B3A3A;
+    --c-loup-light: #B85C5C;
+    --c-loup-dark: #6B2A2A;
+    --c-village: #1A2F12;
+    --c-village-light: #5C8B4A;
+    --c-neutre: #5C3D5C;
+    --c-neutre-light: #8A6BBE;
+    --c-amoureux: #C9A84C;
+    --c-amoureux-light: #F0DDB0;
+    
+    /* Bruns */
+    --c-brun: #5C3D1E;
+    --c-brun-clair: #8B6340;
+    --c-brun-fonce: #3D2A1E;
+    
+    /* Beiges & Ivoires */
+    --c-beige: #D4B483;
+    --c-beige-clair: #F0DDB0;
+    --c-beige-fonce: #B89563;
+    
+    /* Or */
+    --c-or: #C9A84C;
+    --c-or-light: #E8C87A;
+    --c-or-dark: #A68B3C;
+    
+    /* Noirs & Blancs */
+    --c-noir: #1A1A1A;
+    --c-noir-soft: #2A2A2A;
+    --c-blanc-casse: #F5ECD7;
+    --c-blanc-casse-light: #FFFBF0;
+    
+    /* ========================================================
+       VALEURS RGB POUR LES COULEURS (pour rgba())
+       ======================================================== */
+    --c-loup-rgb: 139, 58, 58;
+    --c-loup-light-rgb: 184, 92, 92;
+    --c-loup-dark-rgb: 107, 42, 42;
+    --c-village-rgb: 26, 47, 18;
+    --c-village-light-rgb: 92, 139, 74;
+    --c-vert-clair-rgb: 92, 139, 74;
+    --c-vert-foret-rgb: 45, 74, 34;
+    --c-neutre-rgb: 92, 61, 92;
+    --c-neutre-light-rgb: 138, 107, 190;
+    --c-amoureux-rgb: 201, 168, 76;
+    --c-amoureux-light-rgb: 240, 221, 176;
+    --c-brun-rgb: 92, 61, 30;
+    --c-brun-clair-rgb: 139, 99, 64;
+    --c-beige-rgb: 212, 180, 131;
+    --c-beige-clair-rgb: 240, 221, 176;
+    --c-or-rgb: 201, 168, 76;
+    --c-or-light-rgb: 232, 200, 122;
+    --c-blanc-casse-rgb: 245, 236, 215;
+    
+    /* ========================================================
+       ESPACEMENTS - SYSTÈME 8px BASE
+       ======================================================== */
+    --s-xxs: 0.25rem; /* 4px */
+    --s-xs: 0.5rem;  /* 8px */
+    --s-sm: 0.75rem; /* 12px */
+    --s-md: 1rem;    /* 16px */
+    --s-lg: 1.5rem;  /* 24px */
+    --s-xl: 2rem;    /* 32px */
+    --s-xxl: 3rem;   /* 48px */
+    
+    /* ========================================================
+       TYPOGRAPHIE
+       ======================================================== */
+    --t-xxs: 0.65rem;   /* 10.4px */
+    --t-xs: 0.75rem;    /* 12px */
+    --t-sm: 0.85rem;    /* 13.6px */
+    --t-md: 1rem;      /* 16px */
+    --t-lg: 1.15rem;   /* 18.4px */
+    --t-xl: 1.3rem;    /* 20.8px */
+    --t-xxl: 1.5rem;   /* 24px */
+    --t-xxxl: 1.8rem;  /* 28.8px */
+    --t-huge: 2.5rem;   /* 40px */
+    
+    /* Polices - Compatibilité ascendante */
+    --f-primary: 'Crimson Text', serif;
+    --f-display: 'Cinzel', serif;
+    
+    /* ========================================================
+       BORDURES & ARRONDIS
+       ======================================================== */
+    --b-radius-sm: 4px;
+    --b-radius-md: 8px;
+    --b-radius-lg: 12px;
+    --b-radius-xl: 14px;
+    --b-radius-full: 999px;
+    
+    --b-thin: 1px;
+    --b-normal: 2px;
+    --b-thick: 3px;
+    
+    /* ========================================================
+       OMBRES
+       ======================================================== */
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 12px 35px rgba(0, 0, 0, 0.6);
+    --shadow-glow-or: 0 0 20px rgba(201, 168, 76, 0.3);
+    --shadow-glow-loup: 0 0 15px rgba(139, 58, 58, 0.4);
+    --shadow-glow-village: 0 0 15px rgba(61, 107, 47, 0.4);
+    
+    /* ========================================================
+       TRANSITIONS
+       ======================================================== */
+    --trans-fast: 0.15s ease;
+    --trans-normal: 0.25s ease;
+    --trans-slow: 0.35s ease;
+    --trans-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --trans-bounce: 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+    
+    /* ========================================================
+       Z-INDEX
+       ======================================================== */
+    --z-bg: -1;
+    --z-default: 1;
+    --z-dropdown: 10;
+    --z-sticky: 20;
+    --z-fixed: 30;
+    --z-modal-backdrop: 99;
+    --z-modal: 100;
+    --z-max: 9999;
+    
+    /* ========================================================
+       COMPATIBILITÉ ASCENDANTE - Anciennes variables
+       ======================================================== */
+    --vert-foret: var(--c-vert-foret);
+    --vert-moyen: var(--c-vert-moyen);
+    --brun: var(--c-brun);
+    --brun-clair: var(--c-brun-clair);
+    --beige: var(--c-beige);
+    --beige-clair: var(--c-beige-clair);
+    --or: var(--c-or);
+    --noir: var(--c-noir);
+    --blanc-casse: var(--c-blanc-casse);
+    
+    /* Variables de camp pour compatibilité */
+    --camp-loup: var(--c-loup);
+    --camp-loup-light: var(--c-loup-light);
+    --camp-village: var(--c-village);
+    --camp-village-light: var(--c-village-light);
+    --camp-neutre: var(--c-neutre);
+    --camp-neutre-light: var(--c-neutre-light);
+    --camp-amoureux: var(--c-amoureux);
+    --camp-amoureux-light: var(--c-amoureux-light);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+body {
+    font-family: var(--f-primary);
+    font-size: var(--t-md);
+    line-height: 1.5;
+    background-color: var(--c-vert-foret);
+    color: var(--c-blanc-casse);
+    min-height: 100vh;
+    max-width: 480px;
+    margin: 0 auto;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Prévention du zoom sur input focus */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="search"] {
+    font-size: var(--t-md);
+}
+
+/* Optimisation des formulaires pour mobile */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+button,
+select,
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Espacement minimal entre éléments interactifs */
+button:not(:last-child),
+.btn:not(:last-child) {
+    margin-bottom: var(--s-xs);
+}
+
+/* ============================================================
+   ÉCRANS
+   ============================================================ */
+.ecran {
+    display: none;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.ecran.actif {
+    display: flex;
+}
+
+/* ============================================================
+   ACCUEIL
+   ============================================================ */
+#ecran-accueil {
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(180deg, rgba(5, 13, 4, 0.15) 0%, rgba(5, 13, 4, 0.88) 100%),
+        radial-gradient(ellipse at 50% 16%, rgba(201, 168, 76, 0.22) 0%, rgba(45, 74, 34, 0.24) 34%, rgba(5, 13, 4, 0) 62%),
+        linear-gradient(155deg, #0a1507 0%, #162812 46%, #050d04 100%);
+    justify-content: center;
+    align-items: stretch;
+    text-align: center;
+}
+
+#ecran-accueil::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 22%, rgba(245,236,215,0.22) 0 1px, transparent 2px),
+        radial-gradient(circle at 76% 18%, rgba(201,168,76,0.2) 0 1px, transparent 2px),
+        radial-gradient(circle at 64% 48%, rgba(245,236,215,0.16) 0 1px, transparent 2px),
+        linear-gradient(90deg, rgba(0,0,0,0.35), transparent 18%, transparent 82%, rgba(0,0,0,0.35));
+    background-size: 190px 190px, 230px 230px, 270px 270px, 100% 100%;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+#ecran-accueil::after {
+    content: "";
+    position: absolute;
+    inset: 1rem;
+    border: 1px solid rgba(201,168,76,0.24);
+    border-radius: 18px;
+    box-shadow: inset 0 0 28px rgba(201,168,76,0.08), inset 0 0 80px rgba(0,0,0,0.42);
+    pointer-events: none;
+}
+
+.accueil-content {
+    position: relative;
+    z-index: var(--z-default);
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: calc(var(--s-xl) + var(--s-md)) var(--s-lg) max(var(--s-xl), env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--s-xl);
+    animation: accueilEntree var(--trans-slow) ease both;
+}
+
+.accueil-logo-wrap {
+    position: relative;
+    width: min(72vw, 292px);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 38%;
+    animation: logoRespire 6s ease-in-out infinite;
+}
+
+.accueil-logo-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 7%;
+    z-index: 0;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, rgba(201,168,76,0.22) 0%, rgba(61,107,47,0.14) 42%, transparent 72%);
+    filter: blur(18px);
+    opacity: 0.82;
+}
+
+.accueil-logo-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 8%;
+    z-index: 0;
+    border-radius: 36%;
+    box-shadow: 0 22px 42px rgba(0,0,0,0.42), 0 0 34px rgba(201,168,76,0.12);
+}
+
+.accueil-logo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 32%;
+    mix-blend-mode: screen;
+    opacity: 0.94;
+    filter: saturate(0.95) contrast(1.08) drop-shadow(0 18px 28px rgba(0,0,0,0.38)) drop-shadow(0 0 12px rgba(201,168,76,0.22));
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 58%, rgba(0,0,0,0.96) 74%, rgba(0,0,0,0.45) 88%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, #000 58%, rgba(0,0,0,0.96) 74%, rgba(0,0,0,0.45) 88%, transparent 100%);
+    user-select: none;
+}
+
+#ecran-accueil h1 {
+    font-family: var(--f-display);
+    font-size: clamp(var(--t-xxl), 8vw, var(--t-huge));
+    line-height: 0.95;
+    color: var(--c-or);
+    letter-spacing: 0;
+    text-shadow: 0 3px 0 rgba(0, 0, 0, 0.55), 0 0 26px rgba(201, 168, 76, 0.28);
+    margin-bottom: var(--s-sm);
+}
+
+.accueil-texte {
+    max-width: 20rem;
+}
+
+.sous-titre {
+    font-size: clamp(var(--t-sm), 4vw, var(--t-lg));
+    line-height: 1.35;
+    color: var(--c-blanc-casse);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.78);
+    margin-bottom: 0;
+    font-style: italic;
+}
+
+#ecran-accueil .accueil-action {
+    position: relative;
+    overflow: hidden;
+    max-width: 320px;
+    min-height: 58px;
+    margin-top: var(--s-xs);
+    background: linear-gradient(135deg, var(--c-brun), var(--c-or));
+    color: var(--c-blanc-casse-light);
+    border: var(--b-thin) solid var(--c-or);
+    box-shadow: var(--shadow-md), 0 0 24px rgba(var(--c-or-rgb), 0.16);
+    font-family: var(--f-display);
+    font-size: var(--t-lg);
+    border-radius: var(--b-radius-md);
+    cursor: pointer;
+    width: 100%;
+    transition: background var(--trans-normal), transform var(--trans-normal), box-shadow var(--trans-normal);
+    animation: accueilEntree var(--trans-slow) ease both;
+}
+
+#ecran-accueil .accueil-action::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.18) 45%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform var(--trans-slow);
+}
+
+#ecran-accueil .accueil-action:hover::before {
+    transform: translateX(120%);
+}
+
+#ecran-accueil .accueil-action:hover {
+    background: linear-gradient(135deg, rgba(139, 99, 64, 0.96), rgba(201, 168, 76, 0.96));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(201, 168, 76, 0.28);
+}
+
+#ecran-accueil .accueil-action:active {
+    transform: translateY(0);
+}
+
+@keyframes accueilEntree {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes logoRespire {
+    0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
+    50% { transform: translateY(-6px) scale(1.015); filter: brightness(1.08); }
+}
+
+@media (max-width: 380px) {
+    #ecran-accueil h1 { font-size: var(--t-xxl); }
+    .sous-titre { font-size: var(--t-md); }
+}
+
+@media (max-height: 680px) {
+    .accueil-content {
+        gap: var(--s-lg);
+        padding-top: var(--s-md);
+        padding-bottom: max(var(--s-md), env(safe-area-inset-bottom));
+    }
+    .accueil-logo-wrap { width: min(58vw, 214px); }
+    #ecran-accueil h1 { font-size: var(--t-xxl); }
+    .sous-titre { font-size: var(--t-md); }
+    #ecran-accueil .accueil-action {
+        min-height: 52px;
+        padding: var(--s-sm) 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .accueil-content,
+    .accueil-logo-wrap,
+    #ecran-accueil .accueil-action::before {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* ============================================================
+   BOUTONS PRINCIPAUX
+   ============================================================ */
+.btn,
+.btn-principal {
+    background: linear-gradient(135deg, var(--c-brun), var(--c-brun-clair));
+    color: var(--c-beige-clair);
+    border: var(--b-normal) solid var(--c-or);
+    padding: var(--s-md) calc(var(--s-lg) * 1.5);
+    font-family: var(--f-display);
+    font-size: var(--t-lg);
+    border-radius: var(--b-radius-md);
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    transition: all var(--trans-normal);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-xs);
+}
+
+.btn-principal:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--c-brun-clair), var(--c-or));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-principal:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-principal:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn-secondaire {
+    background: transparent;
+    color: var(--c-beige);
+    border: var(--b-thin) solid var(--c-beige);
+    padding: var(--s-sm) var(--s-lg);
+    font-family: var(--f-primary);
+    font-size: var(--t-md);
+    border-radius: var(--b-radius-sm);
+    cursor: pointer;
+    width: 100%;
+    margin-top: var(--s-md);
+    transition: all var(--trans-normal);
+    text-align: center;
+}
+
+.btn-secondaire:hover:not(:disabled) {
+    background: rgba(212, 180, 131, 0.1);
+    border-color: var(--c-or);
+}
+
+.btn-secondaire:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-retour {
+    background: transparent;
+    color: var(--c-beige);
+    border: none;
+    font-size: var(--t-md);
+    cursor: pointer;
+    font-family: var(--f-primary);
+    padding: var(--s-xs);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-xs);
+    transition: color var(--trans-fast);
+    white-space: nowrap;
+}
+
+.btn-retour:hover {
+    color: var(--c-or);
+}
+
+.btn-action {
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--c-beige);
+    border: var(--b-thin) solid var(--c-brun-clair);
+    padding: var(--s-sm) var(--s-md);
+    border-radius: var(--b-radius-md);
+    cursor: pointer;
+    font-family: var(--f-primary);
+    font-size: var(--t-md);
+    text-align: left;
+    transition: all var(--trans-normal);
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-xs);
+}
+
+.btn-action:hover:not(:disabled) {
+    border-color: var(--c-or);
+    background: rgba(201, 168, 76, 0.1);
+}
+
+.btn-action:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-action.danger {
+    border-color: var(--c-loup);
+    color: var(--c-loup-light);
+}
+
+.btn-action.danger:hover:not(:disabled) {
+    background: rgba(139, 68, 68, 0.2);
+}
+
+/* ============================================================
+   BOUTON RECHERCHE (avec icône de loupe)
+   ============================================================ */
+.btn-recherche {
+    background: var(--c-vert-foret);
+    color: var(--c-or);
+    border: var(--b-thin) solid var(--c-or);
+    padding: 0;
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    height: 44px;
+    border-radius: var(--b-radius-lg);
+    cursor: pointer;
+    font-size: var(--t-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--trans-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-recherche:hover {
+    background: var(--c-vert-moyen);
+    border-color: var(--c-or-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-recherche:active {
+    transform: translateY(0);
+}
+
+/* ============================================================
+   EN-TÊTE
+   ============================================================ */
+.entete {
+    background: linear-gradient(180deg, #0d1a08, var(--c-vert-foret));
+    padding: var(--s-md) var(--s-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--s-md);
+    border-bottom: var(--b-normal) solid var(--c-or);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+}
+
+.entete h2 {
+    font-family: var(--f-display);
+    color: var(--c-or);
+    font-size: clamp(var(--t-md), 4vw, var(--t-xl));
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 var(--s-sm);
+}
+
+.compteur-tour {
+    font-size: var(--t-sm);
+    color: var(--c-beige);
+    background: rgba(0, 0, 0, 0.3);
+    padding: var(--s-xs) var(--s-sm);
+    border-radius: var(--b-radius-full);
+    border: var(--b-thin) solid var(--c-brun-clair);
+    white-space: nowrap;
+}
+
+/* ============================================================
+   CONTENU
+   ============================================================ */
+.contenu {
+    padding: var(--s-lg);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-md);
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   JOUEURS
+   ============================================================ */
+#ecran-joueurs {
+    position: relative;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(201, 168, 76, 0.1), transparent 34%),
+        linear-gradient(180deg, #0d1a08 0%, var(--c-vert-foret) 42%, #111d0d 100%);
+}
+
+#ecran-joueurs::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.22), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.22)),
+        radial-gradient(circle at 18% 22%, rgba(245, 236, 215, 0.08) 0 1px, transparent 2px),
+        radial-gradient(circle at 78% 36%, rgba(201, 168, 76, 0.1) 0 1px, transparent 2px);
+    background-size: 100% 100%, 180px 180px, 240px 240px;
+    pointer-events: none;
+}
+
+#ecran-joueurs .contenu {
+    position: relative;
+    z-index: var(--z-default);
+    gap: var(--s-md);
+}
+
+.ajout-joueur {
+    display: flex;
+    align-items: stretch;
+    gap: var(--s-sm);
+    padding: var(--s-xs);
+    background: rgba(0, 0, 0, 0.24);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.18);
+    border-radius: var(--b-radius-lg);
+    box-shadow: inset 0 1px 0 rgba(245, 236, 215, 0.06), var(--shadow-md);
+}
+
+.ajout-joueur input {
+    flex: 1;
+    min-width: 0;
+    background: rgba(5, 13, 4, 0.54);
+    border: var(--b-thin) solid rgba(139, 99, 64, 0.72);
+    color: var(--c-blanc-casse);
+    padding: var(--s-md);
+    border-radius: var(--b-radius-md);
+    font-family: var(--f-primary);
+    font-size: var(--t-lg);
+    box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.32);
+    transition: border-color var(--trans-normal), box-shadow var(--trans-normal), background var(--trans-normal);
+}
+
+.ajout-joueur input::placeholder {
+    color: rgba(212, 180, 131, 0.68);
+}
+
+.ajout-joueur input:focus {
+    outline: none;
+    border-color: var(--c-or);
+    background: rgba(5, 13, 4, 0.72);
+    box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.32), 0 0 0 3px rgba(201, 168, 76, 0.12);
+}
+
+.btn-ajouter {
+    flex: 0 0 48px;
+    background: linear-gradient(145deg, var(--c-vert-moyen), #243f1b);
+    color: var(--c-beige-clair);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.78);
+    width: 48px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: var(--b-radius-md);
+    font-size: 1.65rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all var(--trans-normal);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-ajouter:hover {
+    background: linear-gradient(145deg, var(--c-or), var(--c-brun-clair));
+    color: var(--c-noir);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg), 0 0 18px rgba(201, 168, 76, 0.16);
+}
+
+.btn-ajouter:active {
+    transform: translateY(0);
+}
+
+#liste-joueurs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-sm);
+}
+
+.joueur-item {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.34), rgba(45, 74, 34, 0.34));
+    border: var(--b-thin) solid rgba(139, 99, 64, 0.62);
+    border-radius: var(--b-radius-lg);
+    padding: var(--s-md) var(--s-sm) var(--s-md) var(--s-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-sm);
+    min-height: 58px;
+    box-shadow: var(--shadow-md), inset 0 1px 0 rgba(245, 236, 215, 0.05);
+    animation: apparaitre var(--trans-normal) ease both;
+    transition: transform var(--trans-fast), border-color var(--trans-normal), background var(--trans-normal);
+}
+
+.joueur-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, rgba(201, 168, 76, 0.2), var(--c-or), rgba(201, 168, 76, 0.2));
+}
+
+.joueur-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(201, 168, 76, 0.55);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.38), rgba(61, 107, 47, 0.32));
+}
+
+@keyframes apparaitre {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.985);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+.joueur-item > span {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: var(--s-sm);
+}
+.joueur-nom {
+    min-width: 0;
+    color: var(--c-blanc-casse);
+    font-size: var(--t-lg);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+.joueur-numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    min-width: 2.05rem;
+    height: 2.05rem;
+    margin-right: 0;
+    color: var(--c-or);
+    background: rgba(201, 168, 76, 0.09);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.22);
+    border-radius: var(--b-radius-full);
+    font-family: var(--f-display);
+    font-size: var(--t-xs);
+}
+.btn-supprimer {
+    flex: 0 0 auto;
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    background: rgba(139, 68, 68, 0.12);
+    border: var(--b-thin) solid rgba(204, 102, 102, 0.22);
+    border-radius: var(--b-radius-full);
+    color: var(--c-loup-light);
+    font-size: var(--t-lg);
+    cursor: pointer;
+    padding: 0;
+    transition: all var(--trans-fast);
+}
+
+.btn-supprimer:hover {
+    color: #FFD0D0;
+    background: rgba(139, 68, 68, 0.34);
+    border-color: rgba(204, 102, 102, 0.55);
+    transform: scale(1.05);
+}
+.info-joueurs {
+    text-align: center;
+    color: var(--c-beige);
+    font-style: italic;
+    font-size: var(--t-md);
+    line-height: 1.35;
+    padding: var(--s-xs) var(--s-sm);
+}
+
+#btn-suivant-roles {
+    align-self: center;
+    margin-top: var(--s-xs);
+    border-radius: var(--b-radius-lg);
+    box-shadow: var(--shadow-lg), 0 0 18px rgba(201, 168, 76, 0.12);
+}
+
+/* ============================================================
+   HISTORIQUE DES JOUEURS
+   ============================================================ */
+#profils-rapides {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: var(--s-sm) var(--s-md);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--s-sm);
+    background: rgba(0, 0, 0, 0.18);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.14);
+    border-radius: var(--b-radius-lg);
+    box-shadow: inset 0 1px 0 rgba(245, 236, 215, 0.04);
+}
+
+#profils-rapides:empty {
+    display: none;
+}
+
+.profils-titre {
+    width: 100%;
+    color: var(--c-or);
+    font-family: var(--f-display);
+    font-size: var(--t-xs);
+    text-align: center;
+    margin-bottom: var(--s-xs);
+    opacity: 0.9;
+}
+
+.profils-liste {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-sm);
+    justify-content: center;
+}
+.profil-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-xs);
+    padding: var(--s-xs);
+    background: rgba(5, 13, 4, 0.34);
+    border: var(--b-thin) solid rgba(139, 99, 64, 0.32);
+    border-radius: var(--b-radius-full);
+}
+
+.profil-tag {
+    background-color: rgba(201, 168, 76, 0.08);
+    color: var(--c-beige-clair);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.3);
+    border-radius: var(--b-radius-full);
+    padding: var(--s-sm) var(--s-md);
+    font-family: var(--f-display);
+    font-size: var(--t-sm);
+    line-height: 1;
+    cursor: pointer;
+    transition: all var(--trans-fast);
+}
+
+.profil-tag:hover {
+    background-color: var(--c-or);
+    border-color: var(--c-or);
+    color: #1a2a1a;
+    transform: translateY(-2px);
+}
+.profil-supprimer {
+    width: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: var(--b-thin) solid transparent;
+    border-radius: var(--b-radius-full);
+    color: var(--c-loup-light);
+    font-size: var(--t-sm);
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+    transition: all var(--trans-fast);
+}
+
+.profil-supprimer:hover {
+    color: #FFD0D0;
+    background: rgba(139, 68, 68, 0.28);
+    border-color: rgba(204, 102, 102, 0.28);
+}
+
+@media (max-width: 380px) {
+    .ajout-joueur {
+        gap: var(--s-sm);
+        padding: var(--s-xs);
+    }
+    .ajout-joueur input {
+        font-size: var(--t-md);
+        padding: var(--s-sm) var(--s-xs);
+    }
+    .btn-ajouter {
+        flex-basis: 44px;
+        width: 44px;
+        min-height: 44px;
+    }
+    .joueur-item {
+        padding: var(--s-md) var(--s-sm);
+    }
+    .joueur-nom {
+        font-size: var(--t-md);
+    }
+}
+
+/* ============================================================
+   MODES (Manuel / IA)
+   ============================================================ */
+.mode-selection {
+    display: flex;
+    gap: var(--s-sm);
+    justify-content: center;
+    max-width: 100%;
+    margin: 0 auto var(--s-md);
+}
+
+.btn-mode {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--c-beige);
+    border: var(--b-thin) solid var(--c-brun-clair);
+    padding: var(--s-md);
+    border-radius: var(--b-radius-sm);
+    cursor: pointer;
+    font-family: var(--f-primary);
+    font-size: var(--t-md);
+    transition: all var(--trans-normal);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-xs);
+}
+
+.btn-mode.actif {
+    background: var(--c-brun);
+    border-color: var(--c-or);
+    color: var(--c-beige-clair);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-mode:hover:not(.actif) {
+    border-color: var(--c-or);
+    background: rgba(201, 168, 76, 0.1);
+}
+
+/* ============================================================
+   RÔLES - Version ancienne supprimée
+   Conserver la version améliorée plus bas dans le fichier
+   ============================================================ */
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.4s ease;
+]/* JOURNAL GRIMOIRE */
+.journal-grimoire {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--bronze);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: none; /* Caché par défaut sur mobile */
+}
+
+.journal-grimoire-titre {
+    font-family: 'Cinzel', serif;
+    color: var(--or);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 0.3rem;
+}
+
+.grimoire-timeline {
+    font-family: 'Crimson Text', serif;
+    color: var(--beige);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 0.3rem;
+}
+
+/* Afficher le grimoire sur tablette et PC */
+@media (min-width: 768px) {
+    .journal-grimoire {
+        display: block;
+    }
+}
+.jauge-barre-remplissage.loup { background: linear-gradient(90deg, #8B3A3A, #B85C5C); }
+.jauge-barre-remplissage.village { background: linear-gradient(90deg, var(--vert-moyen), #5C8B4A); }
+.jauge-pourcentage { min-width: 40px; text-align: right; color: var(--beige); font-size: 0.85rem; }
+.jauge-etat {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    margin-top: 0.6rem;
+    padding: 0.3rem;
+    border-radius: 4px;
+}
+.jauge-etat.equilibre  { color: #6BAF6B; background: rgba(107,175,107,0.15); }
+.jauge-etat.alerte-loups { color: #CC6666; background: rgba(204,102,102,0.15); }
+.jauge-etat.alerte-village { color: #D4B483; background: rgba(212,180,131,0.15); }
+.jauge-suggestion {
+    text-align: center;
+    color: var(--brun-clair);
+    font-style: italic;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+/* ============================================================
+   SUGGESTION IA
+   ============================================================ */
+.suggestion-ia {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--vert-moyen);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 100px;
+    color: var(--beige);
+}
+
+/* ============================================================
+   ATTRIBUTION DES RÔLES
+   ============================================================ */
+.instruction {
+    text-align: center;
+    color: var(--c-beige);
+    font-style: italic;
+    font-size: var(--t-md);
+}
+
+.carte-joueur-nom {
+    font-family: var(--f-display);
+    color: var(--c-or);
+    font-size: clamp(var(--t-lg), 6vw, var(--t-xxl));
+    margin-bottom: var(--s-xl);
+    text-align: center;
+}
+
+/* Conteneur 3D */
+.carte-conteneur {
+    display: flex;
+    justify-content: center;
+    perspective: 1200px;
+    margin: var(--s-md) auto;
+    user-select: none;
+    -webkit-user-select: none;
+    width: 100%;
+    max-width: 280px;
+}
+
+.carte-3d {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform var(--trans-bounce);
+    touch-action: none;
+}
+
+.carte-3d.retournee {
+    transform: rotateY(180deg);
+}
+
+.carte-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: var(--b-radius-xl);
+    overflow: hidden;
+    border: var(--b-thick) solid var(--c-or);
+    box-shadow: var(--shadow-lg);
+}
+
+.carte-dos {
+    background: var(--c-vert-foret);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carte-dos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.carte-dos-texte {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--c-beige-clair);
+    text-align: center;
+    padding: var(--s-md) var(--s-sm);
+    font-style: italic;
+    font-size: var(--t-sm);
+}
+
+.carte-avant {
+    transform: rotateY(180deg);
+    background: linear-gradient(180deg, #1a2f12, #0d1a08);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.carte-image {
+    width: 100%;
+    height: 65%;
+    object-fit: cover;
+    display: block;
+}
+
+.carte-infos {
+    flex: 1;
+    padding: var(--s-md) var(--s-lg);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carte-role-nom {
+    font-family: var(--f-display);
+    font-size: var(--t-xl);
+    color: var(--c-beige-clair);
+    margin-bottom: var(--s-xs);
+}
+
+.carte-role-desc {
+    color: var(--c-beige);
+    font-style: italic;
+    font-size: var(--t-sm);
+    line-height: 1.3;
+}
+
+.aide-bouton {
+    text-align: center;
+    color: var(--c-brun-clair);
+    font-style: italic;
+    font-size: var(--t-xs);
+    margin-top: var(--s-xs);
+}
+
+/* CARTE RÉVÉLÉE (Voyante) */
+.carte-revelee {
+    width: 100%;
+    max-width: 300px;
+    height: 420px;
+    margin: 0 auto;
+    border-radius: var(--b-radius-xl);
+    overflow: hidden;
+    border: var(--b-thick) solid var(--c-or);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(180deg, #1a2f12, #0d1a08);
+    display: flex;
+    flex-direction: column;
+}
+
+.carte-revelee .carte-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    display: block;
+    background-color: #0d1a08;
+}
+
+/* CARTE AMOUREUX */
+.carte-infos-amour {
+    padding: var(--s-xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.carte-amour-emoji {
+    font-size: 3rem;
+    margin-bottom: var(--s-lg);
+}
+
+.carte-infos-amour .carte-role-desc {
+    font-size: var(--t-md);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   ÉCRAN JEU — PHASES
+   ============================================================ */
+.phase-nuit {
+    background: linear-gradient(135deg, #111827, #1e293b);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.25);
+    border-radius: var(--b-radius-xl);
+    padding: var(--s-xl);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.phase-jour {
+    background: linear-gradient(135deg, #4f3d1d, #6e5826);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.25);
+    border-radius: var(--b-radius-xl);
+    padding: var(--s-xl);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+}
+
+.phase-emoji {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: var(--s-md);
+}
+
+.phase-titre {
+    font-family: var(--f-display);
+    color: var(--c-or);
+    font-size: var(--t-xl);
+    margin-bottom: var(--s-sm);
+}
+
+.phase-description {
+    color: var(--c-beige);
+    font-style: italic;
+    font-size: var(--t-lg);
+    margin-bottom: var(--s-md);
+    text-align: center;
+}
+
+/* ============================================================
+   JOUEURS VIVANTS / TAGS
+   ============================================================ */
+.joueurs-vivants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-sm);
+    margin-top: var(--s-md);
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.tag-joueur {
+    flex: 0 0 auto;
+    max-width: 100%;
+    padding: var(--s-sm) var(--s-md);
+    border-radius: var(--b-radius-lg);
+    background: rgba(255, 255, 255, 0.04);
+    border: var(--b-thin) solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    transition: all var(--trans-normal);
+    color: var(--c-blanc-casse);
+    font-size: var(--t-md);
+    white-space: nowrap;
+}
+
+.tag-joueur:hover {
+    transform: translateY(-2px);
+    border-color: var(--c-or);
+}
+
+.tag-joueur.mort {
+    background: rgba(139, 68, 68, 0.2);
+    border-color: var(--c-loup);
+    color: var(--c-loup);
+    text-decoration: line-through;
+}
+
+/* Sélection (vote, loups, Salvateur...) */
+.tag-joueur.selectionne-cible,
+.tag-joueur.selectionne {
+    background: rgba(201, 168, 76, 0.15) !important;
+    border-color: var(--c-or) !important;
+    color: var(--c-or) !important;
+    box-shadow: var(--shadow-glow-or);
+}
+
+/* Mode élimination */
+.tag-elimination {
+    border-color: var(--c-loup) !important;
+    background: rgba(139, 68, 68, 0.15) !important;
+}
+.tag-elimination:hover {
+    background: rgba(139, 68, 68, 0.35) !important;
+    border-color: var(--c-loup-light) !important;
+}
+
+/* ============================================================
+   ACTIONS DU JEU
+   ============================================================ */
+.actions-jeu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-md);
+    margin-top: var(--s-md);
+}
+
+.info-selection {
+    width: 100%;
+    color: var(--c-or);
+    font-family: var(--f-display);
+    font-size: var(--t-sm);
+    margin-bottom: var(--s-xs);
+    text-align: center;
+}
+
+/* ============================================================
+   JOURNAL DE PARTIE (pliable)
+   ============================================================ */
+
+/* Conteneur principal du journal */
+.journal-partie {
+    margin-bottom: var(--s-md);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.2);
+    border-radius: var(--b-radius-xl);
+    overflow: hidden;
+}
+
+/* En-tête cliquable du journal */
+.journal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--s-md) var(--s-lg);
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    user-select: none;
+    transition: background var(--trans-fast);
+}
+
+.journal-header:hover {
+    background: rgba(201, 168, 76, 0.1);
+}
+
+.journal-header-titre {
+    font-family: var(--f-display);
+    color: var(--c-or);
+    font-size: var(--t-md);
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
+}
+
+.journal-header-chevron {
+    color: var(--c-or);
+    font-size: var(--t-sm);
+    transition: transform var(--trans-normal);
+}
+
+.journal-header-chevron.ouvert {
+    transform: rotate(180deg);
+}
+
+/* Corps du journal (masqué par défaut) */
+.journal-body {
+    display: none;
+    padding: var(--s-md);
+    background: rgba(0, 0, 0, 0.15);
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.journal-body.ouvert {
+    display: block;
+}
+
+/* Section dans le journal (Nuit X / Jour X) — pliable aussi */
+.journal-section {
+    margin-bottom: var(--s-sm);
+    border-radius: var(--b-radius-lg);
+    overflow: hidden;
+    border: var(--b-thin) solid rgba(255, 255, 255, 0.05);
+}
+
+.journal-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--s-sm) var(--s-md);
+    background: rgba(201, 168, 76, 0.12);
+    cursor: pointer;
+    user-select: none;
+    transition: background var(--trans-fast);
+}
+
+.journal-section-header:hover {
+    background: rgba(201, 168, 76, 0.2);
+}
+
+.journal-section-titre {
+    font-family: var(--f-display);
+    color: var(--c-or);
+    font-size: var(--t-sm);
+    font-weight: 700;
+}
+
+.journal-section-chevron {
+    color: var(--c-or);
+    font-size: var(--t-xxs);
+    transition: transform var(--trans-normal);
+}
+
+.journal-section-chevron.ouvert {
+    transform: rotate(180deg);
+}
+
+/* Contenu d'une section */
+.journal-section-body {
+    display: none;
+    padding: var(--s-sm) var(--s-sm) var(--s-xs);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.journal-section-body.ouvert {
+    display: block;
+}
+
+/* Item individuel dans le journal */
+.journal-item-new {
+    display: flex;
+    gap: var(--s-sm);
+    padding: var(--s-sm) var(--s-xs);
+    border-bottom: var(--b-thin) solid rgba(255, 255, 255, 0.04);
+    align-items: flex-start;
+}
+
+.journal-item-new:last-child {
+    border-bottom: none;
+}
+
+.journal-item-point {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--b-radius-full);
+    background: var(--c-or);
+    margin-top: 6px;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.journal-item-new.actif .journal-item-point {
+    opacity: 1;
+    box-shadow: var(--shadow-glow-or);
+}
+
+.journal-item-texte {
+    flex: 1;
+}
+
+.journal-item-titre {
+    font-family: var(--f-display);
+    font-size: var(--t-sm);
+    color: var(--c-blanc-casse);
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.journal-item-new.actif .journal-item-titre {
+    color: var(--c-or);
+}
+
+.journal-item-detail {
+    font-size: var(--t-xs);
+    color: var(--c-beige);
+    font-style: italic;
+    line-height: 1.3;
+    margin-top: var(--s-xs);
+}
+
+/* Badge résumé (nb événements quand section fermée) */
+.journal-section-badge {
+    font-size: var(--t-xxs);
+    color: var(--c-beige);
+    background: rgba(0, 0, 0, 0.3);
+    padding: var(--s-xxs) var(--s-sm);
+    border-radius: var(--b-radius-full);
+    margin-right: var(--s-sm);
+}
+
+/* Garder l'ancien .timeline-nuit pour compatibilité mais le cacher */
+.timeline-nuit {
+    display: none;
+}
+
+/* ============================================================
+   BOUTON ŒIL & FICHES
+   ============================================================ */
+.btn-oeil {
+    background: transparent;
+    border: var(--b-thin) solid var(--c-brun-clair);
+    color: var(--c-beige-clair);
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    height: 44px;
+    border-radius: var(--b-radius-full);
+    font-size: var(--t-lg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--trans-normal);
+    flex-shrink: 0;
+}
+
+.btn-oeil:hover {
+    border-color: var(--c-or);
+    background: rgba(201, 168, 76, 0.15);
+}
+
+.btn-fiches {
+    background: transparent;
+    border: var(--b-thin) solid var(--c-brun-clair);
+    color: var(--c-beige-clair);
+    padding: var(--s-xs) var(--s-md);
+    border-radius: var(--b-radius-full);
+    font-size: var(--t-sm);
+    cursor: pointer;
+    transition: all var(--trans-normal);
+    flex-shrink: 0;
+    font-family: var(--f-display);
+    white-space: nowrap;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-xs);
+}
+
+.btn-fiches:hover {
+    border-color: var(--c-or);
+    background: rgba(201, 168, 76, 0.15);
+}
+
+/* ============================================================
+   MODALES
+   ============================================================ */
+.modale {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: var(--z-modal-backdrop);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-xl);
+}
+
+.modale-contenu {
+    background: linear-gradient(180deg, #1a2f12, #0d1a08);
+    border: var(--b-normal) solid var(--c-or);
+    border-radius: var(--b-radius-lg);
+    max-width: 420px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: var(--s-xl);
+}
+
+.modale-fiches-contenu {
+    max-width: 500px;
+    max-height: 85vh;
+}
+
+.modale-entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--s-lg);
+    padding-bottom: var(--s-md);
+    border-bottom: var(--b-thin) solid var(--c-brun-clair);
+}
+
+.modale-entete h3 {
+    font-family: var(--f-display);
+    color: var(--c-or);
+    font-size: var(--t-xl);
+}
+
+.btn-fermer-modale {
+    background: transparent;
+    border: none;
+    color: var(--c-beige);
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: var(--s-xs);
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--trans-fast);
+}
+
+.btn-fermer-modale:hover {
+    color: var(--c-or);
+}
+
+/* ============================================================
+   MODALE VUE D'ENSEMBLE DES RÔLES (œil)
+   ============================================================ */
+.ligne-role-overview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--s-md) var(--s-lg);
+    margin-bottom: var(--s-sm);
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.12);
+    border-radius: var(--b-radius-lg);
+    color: var(--c-blanc-casse);
+    transition: all var(--trans-normal);
+}
+
+.ligne-role-overview:hover {
+    background: rgba(201, 168, 76, 0.06);
+    border-color: rgba(201, 168, 76, 0.35);
+    transform: translateY(-2px);
+}
+
+.ligne-role-overview.mort {
+    opacity: 0.45;
+    text-decoration: line-through;
+}
+
+.overview-nom {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    font-size: var(--t-md);
+}
+
+.overview-role-container {
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
+}
+
+.role-cache {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.role-revele {
+    font-size: var(--t-sm);
+    font-weight: 500;
+    color: var(--c-or);
+    padding: var(--s-xs) var(--s-sm);
+    background: rgba(201, 168, 76, 0.08);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.25);
+    border-radius: var(--b-radius-full);
+}
+
+/* ============================================================
+   FICHES DES RÔLES
+   ============================================================ */
+.liste-fiches-roles {
+    padding: var(--s-sm) 0;
+}
+
+.fiche-role {
+    background: rgba(255, 255, 255, 0.03);
+    border: var(--b-thin) solid rgba(201, 168, 76, 0.15);
+    border-radius: var(--b-radius-lg);
+    padding: var(--s-md) var(--s-xl);
+    margin-bottom: var(--s-xl);
+}
+
+.fiche-role:last-child {
+    margin-bottom: 0;
+}
+
+.fiche-role-titre {
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
+    font-family: var(--f-display);
+    color: var(--c-or);
+    font-size: var(--t-xl);
+    margin-bottom: var(--s-md);
+    flex-wrap: wrap;
+}
+
+.fiche-role-camp {
+    font-size: var(--t-xxs);
+    padding: var(--s-xs) var(--s-sm);
+    border-radius: var(--b-radius-lg);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--c-beige);
+    font-family: var(--f-primary);
+}
+
+.fiche-role-detail {
+    color: var(--c-beige-clair);
+    font-size: var(--t-md);
+    line-height: 1.5;
+    margin-bottom: var(--s-xs);
+    padding-left: var(--s-sm);
+}
+
+.fiche-role-detail span {
+    color: var(--c-beige);
+    font-weight: 600;
+}
+
+.fiche-role-limite {
+    color: var(--c-neutre-light);
+    font-size: var(--t-md);
+    font-style: italic;
+    margin-bottom: var(--s-xs);
+    padding-left: var(--s-sm);
+}
+
+.fiche-role-mj {
+    margin-top: var(--s-md);
+    padding: var(--s-md);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--b-radius-md);
+    border-left: 3px solid var(--c-or);
+    color: var(--c-beige);
+    font-size: var(--t-sm);
+}
+
+.fiche-role-mj span {
+    color: var(--c-or);
+    font-weight: bold;
+}
+
+/* ============================================================
+   ÉCRAN DE TIRAGE DU COMÉDIEN
+   ============================================================ */
+.ecran-tirage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: var(--z-max);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tirage-contenu {
+    background: linear-gradient(180deg, #0d1a08, #1a2f12);
+    border: var(--b-thick) solid var(--c-or);
+    border-radius: 20px;
+    padding: calc(var(--s-xxl) + var(--s-md)) var(--s-xxl);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 0 50px rgba(201, 168, 76, 0.3);
+    animation: apparaitreTirage var(--trans-slow) ease;
+}
+@keyframes apparaitreTirage {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.tirage-emoji {
+    font-size: 4rem;
+    margin-bottom: var(--s-sm);
+}
+
+.tirage-titre {
+    font-family: var(--f-display);
+    color: var(--c-or);
+    font-size: var(--t-xxl);
+    margin-bottom: var(--s-sm);
+}
+
+.tirage-texte {
+    color: var(--c-beige);
+    font-size: var(--t-lg);
+    font-style: italic;
+    margin-bottom: var(--s-md);
+}
+
+.tirage-nom {
+    font-family: var(--f-display);
+    font-size: clamp(var(--t-xxl), 10vw, var(--t-huge));
+    color: var(--c-beige-clair);
+    text-shadow: 0 0 20px var(--c-or);
+    margin-bottom: var(--s-xl);
+}
+
+.tirage-contenu .btn-principal {
+    max-width: 200px;
+    margin: var(--s-md) auto 0;
+    font-size: var(--t-md);
+    padding: var(--s-md) var(--s-xl);
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--c-vert-foret);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--c-brun-clair);
+    border-radius: 2px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .ligne-role-overview {
+        padding: var(--s-sm);
+    }
+    .role-revele {
+        font-size: var(--t-sm);
+    }
+    .btn-oeil-role {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+    }
+}
+
+/* ============================================================
+   AMÉLIORATIONS ÉCRAN SÉLECTION DES RÔLES
+   ============================================================ */
+
+/* ==== CATÉGORIES AMÉLIORÉES ==== */
+.categorie-role {
+    margin-bottom: var(--s-xl);
+    position: relative;
+    padding: var(--s-sm);
+    border-radius: var(--b-radius-lg);
+    overflow: hidden;
+}
+
+.categorie-role::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(201, 168, 76, 0.05) 0%,
+        transparent 50%,
+        rgba(201, 168, 76, 0.02) 100%);
+    pointer-events: none;
+}
+
+.categorie-titre {
+    font-family: var(--f-display);
+    font-size: var(--t-lg);
+    color: var(--c-or);
+    margin-bottom: var(--s-md);
+    padding-bottom: var(--s-sm);
+    border-bottom: var(--b-normal) solid var(--c-or);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
+    letter-spacing: 0.5px;
+}
+
+.categorie-titre::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 40px;
+    height: 2px;
+    background: var(--c-or);
+    box-shadow: 0 0 8px var(--c-or);
+}
+
+/* Couleurs de titre par camp */
+.categorie-titre[data-camp="loups"] {
+    color: var(--c-loup-light);
+    border-color: var(--c-loup);
+    text-align: left;
+}
+
+.categorie-titre[data-camp="loups"]::before {
+    background: var(--c-loup);
+    box-shadow: 0 0 8px var(--c-loup);
+}
+
+.categorie-titre[data-camp="villageois"] {
+    color: var(--c-village-light);
+    border-color: var(--c-village-light);
+    text-align: left;
+}
+
+.categorie-titre[data-camp="villageois"]::before {
+    background: var(--c-village-light);
+    box-shadow: 0 0 8px var(--c-village-light);
+}
+
+.categorie-titre[data-camp="neutres"] {
+    color: var(--c-neutre-light);
+    border-color: var(--c-neutre);
+    text-align: left;
+}
+
+.categorie-titre[data-camp="neutres"]::before {
+    background: var(--c-neutre);
+    box-shadow: 0 0 8px var(--c-neutre);
+}
+
+.categorie-titre[data-camp="amoureux"] {
+    color: var(--c-or);
+    border-color: var(--c-or);
+    text-align: left;
+}
+
+.categorie-titre[data-camp="amoureux"]::before {
+    background: var(--c-or);
+    box-shadow: 0 0 10px var(--c-or);
+}
+
+/* Séparateurs de catégorie stylisés */
+.categorie-role:not(:last-child)::after {
+    content: "";
+    display: block;
+    height: 1px;
+    margin: var(--s-sm) 0;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--c-or) 50%,
+        transparent 100%);
+    opacity: 0.2;
+}
+
+/* ==== CARTES DE RÔLES REDESIGNÉES ==== */
+.role-item {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.04) 100%);
+    border: var(--b-normal) solid var(--c-brun-clair);
+    border-radius: var(--b-radius-lg);
+    padding: var(--s-md) var(--s-lg);
+    margin-bottom: var(--s-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-xs);
+    cursor: pointer;
+    transition: all var(--trans-smooth);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    min-height: 72px;
+}
+
+/* Conteneur principal (nom + compteur) */
+.role-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+/* Effet grimoire pour les cartes */
+.role-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--c-or) 50%,
+        transparent 100%);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.role-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--c-or) 50%,
+        transparent 100%);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* Bordures par camp */
+.role-item[data-camp="loups"] {
+    border-color: var(--c-loup);
+    background: linear-gradient(135deg,
+        rgba(139, 58, 58, 0.08) 0%,
+        rgba(255, 255, 255, 0.04) 100%);
+}
+
+.role-item[data-camp="villageois"] {
+    border-color: var(--c-village-light);
+    background: linear-gradient(135deg,
+        rgba(61, 107, 47, 0.08) 0%,
+        rgba(255, 255, 255, 0.04) 100%);
+}
+
+.role-item[data-camp="neutres"] {
+    border-color: var(--c-neutre);
+    background: linear-gradient(135deg,
+        rgba(92, 61, 92, 0.08) 0%,
+        rgba(255, 255, 255, 0.04) 100%);
+}
+
+.role-item[data-camp="amoureux"] {
+    border-color: var(--c-or);
+    background: linear-gradient(135deg,
+        rgba(201, 168, 76, 0.08) 0%,
+        rgba(255, 255, 255, 0.04) 100%);
+}
+
+/* Hover élégant */
+.role-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg),
+        0 0 0 2px rgba(201, 168, 76, 0.2);
+    border-color: var(--c-or);
+}
+
+/* Sélectionné avec animation */
+.role-item.selectionne {
+    border-color: var(--c-or);
+    background: linear-gradient(135deg,
+        rgba(201, 168, 76, 0.18) 0%,
+        rgba(201, 168, 76, 0.08) 100%);
+    box-shadow: var(--shadow-md),
+        inset 0 1px 0 rgba(245, 236, 215, 0.1);
+    transform: translateY(-1px);
+    animation: roleSelectPulse var(--trans-normal) ease;
+}
+
+/* Animations */
+@keyframes roleSelectPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* ==== INFORMATIONS DU RÔLE ==== */
+
+/* Conteneur pour l'emoji + le nom (côte à côte) */
+.role-info {
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
+    flex: 1;
+    justify-content: flex-start;
+    min-width: 0;
+}
+
+/* L'emoji à gauche */
+.role-emoji {
+    font-size: 1.6rem;
+    display: inline-block;
+    line-height: 1;
+    flex: 0 0 auto;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Le nom du rôle (juste à côté de l'emoji) */
+.role-nom {
+    font-size: var(--t-lg);
+    color: var(--c-beige-clair);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+    text-align: left; /* Le nom reste collé à gauche, juste après l'emoji */
+}
+
+/* La description (elle passe automatiquement à la ligne en dessous) */
+.role-desc {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: var(--t-sm);
+    color: var(--c-beige);
+    font-style: normal;
+    line-height: 1.3;
+    margin-top: var(--s-xs);
+    word-break: break-word;
+    padding-left: var(--s-sm);
+    padding-right: var(--s-sm);
+}
+
+/* Si la description est vide, on la cache complètement */
+.role-desc:empty {
+    display: none;
+}
+
+/* ==== COMPTEUR PERSONNALISÉ (Option A) ==== */
+.role-compteur {
+    display: flex;
+    align-items: center;
+    gap: var(--s-xs);
+    background: rgba(0, 0, 0, 0.2);
+    padding: var(--s-xs) var(--s-sm);
+    border-radius: var(--b-radius-md);
+    border: var(--b-thin) solid var(--c-brun-clair);
+    margin-left: auto;
+}
+
+.btn-moins,
+.btn-plus {
+    background: linear-gradient(135deg, var(--c-brun), var(--c-brun-clair));
+    color: var(--c-beige-clair);
+    border: none;
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    height: 44px;
+    border-radius: var(--b-radius-full);
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--trans-normal);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-moins::before,
+.btn-plus::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--c-or), var(--c-brun-clair));
+    border-radius: var(--b-radius-full);
+    opacity: 0;
+    transition: opacity var(--trans-normal);
+    z-index: var(--z-bg);
+}
+
+.btn-moins:hover:not(:disabled)::before,
+.btn-plus:hover:not(:disabled)::before {
+    opacity: 1;
+}
+
+.btn-moins:hover:not(:disabled),
+.btn-plus:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-glow-or);
+}
+
+.btn-moins:disabled,
+.btn-plus:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.btn-moins:active:not(:disabled),
+.btn-plus:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+.role-quantite {
+    min-width: 28px;
+    text-align: center;
+    color: var(--c-or);
+    font-weight: bold;
+    font-size: var(--t-lg);
+    font-family: var(--f-display);
+    background: rgba(201, 168, 76, 0.1);
+    padding: var(--s-xs) var(--s-sm);
+    border-radius: var(--b-radius-sm);
+}
+
+/* ==== JAUGE D'ÉQUILIBRAGE REDESIGNÉE ==== */
+.jauge-conteneur {
+    margin: var(--s-md) 0;
+    background: linear-gradient(135deg,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.15) 100%);
+    border: var(--b-thin) solid var(--c-brun-clair);
+    border-radius: var(--b-radius-lg);
+    padding: var(--s-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.jauge-ligne {
+    display: flex;
+    align-items: center;
+    gap: var(--s-sm);
+    margin-bottom: var(--s-sm);
+}
+.jauge-ligne:last-child {
+    margin-bottom: 0;
+}
+
+.jauge-label {
+    min-width: 90px;
+    color: var(--c-beige);
+    font-family: var(--f-display);
+    font-size: var(--t-sm);
+    font-weight: 600;
+}
+
+.jauge-barre-conteneur {
+    flex: 1;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--b-radius-full);
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.jauge-barre-remplissage {
+    height: 100%;
+    border-radius: var(--b-radius-full);
+    transition: width var(--trans-smooth),
+        box-shadow var(--trans-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shimmer effect */
+.jauge-barre-remplissage::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%);
+    animation: shimmer 2s infinite;
+    opacity: 0.7;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Couleurs par camp */
+.jauge-barre-remplissage.loup {
+    background: linear-gradient(90deg,
+        var(--c-loup) 0%,
+        var(--c-loup-light) 100%);
+    box-shadow: var(--shadow-glow-loup);
+}
+.jauge-barre-remplissage.village {
+    background: linear-gradient(90deg,
+        var(--c-village-light) 0%,
+        var(--c-vert-clair) 100%);
+    box-shadow: var(--shadow-glow-village);
+}
+
+.jauge-pourcentage {
+    min-width: 45px;
+    text-align: right;
+    color: var(--c-beige-clair);
+    font-weight: bold;
+    font-family: var(--f-display);
+    font-size: var(--t-sm);
+}
+
+/* État d'équilibre */
+.jauge-etat {
+    text-align: center;
+    font-family: var(--f-display);
+    font-size: var(--t-md);
+    margin-top: var(--s-sm);
+    padding: var(--s-xs) var(--s-sm);
+    border-radius: var(--b-radius-md);
+    transition: all var(--trans-smooth);
+    box-shadow: var(--shadow-sm);
+}
+
+.jauge-etat.equilibre {
+    color: var(--c-vert-clair);
+    background: linear-gradient(135deg,
+        rgba(var(--c-vert-clair-rgb), 0.15) 0%,
+        rgba(var(--c-or-rgb), 0.08) 100%);
+    border: var(--b-thin) solid rgba(var(--c-vert-clair-rgb), 0.3);
+    animation: pulseEquilibre 2s ease-in-out infinite;
+}
+.jauge-etat.alerte-loups {
+    color: var(--c-loup-light);
+    background: linear-gradient(135deg,
+        rgba(var(--c-loup-light-rgb), 0.15) 0%,
+        rgba(var(--c-loup-rgb), 0.08) 100%);
+    border: var(--b-thin) solid rgba(var(--c-loup-rgb), 0.3);
+    animation: pulseAlerte 1s ease-in-out infinite;
+}
+.jauge-etat.alerte-village {
+    color: var(--c-or);
+    background: linear-gradient(135deg,
+        rgba(var(--c-beige-rgb), 0.15) 0%,
+        rgba(var(--c-or-rgb), 0.08) 100%);
+    border: var(--b-thin) solid rgba(var(--c-beige-rgb), 0.3);
+    animation: pulseAlerte 1s ease-in-out infinite;
+}
+
+@keyframes pulseEquilibre {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--c-vert-clair-rgb), 0.4); }
+    50% { transform: scale(1.01); box-shadow: 0 0 0 8px rgba(var(--c-vert-clair-rgb), 0); }
+}
+@keyframes pulseAlerte {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.jauge-suggestion {
+    text-align: center;
+    color: var(--c-brun-clair);
+    font-style: italic;
+    font-size: var(--t-sm);
+    margin-top: var(--s-sm);
+    padding: var(--s-xs);
+    border-top: var(--b-thin) solid rgba(var(--c-or-rgb), 0.1);
+}
+
+/* ==== RESPONSIVE POUR ÉCRAN RÔLES ==== */
+@media (max-width: 400px) {
+    .categorie-titre {
+        font-size: var(--t-md);
+    }
+    .role-item {
+        padding: var(--s-sm) var(--s-xs);
+        min-height: 58px;
+    }
+    .role-emoji {
+        font-size: 1.4rem;
+        width: 28px;
+        height: 28px;
+        flex: 0 0 28px;
+    }
+    .role-nom {
+        font-size: var(--t-sm);
+    }
+    .role-desc {
+        font-size: var(--t-xxs);
+    }
+    .btn-moins, .btn-plus {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        min-height: 42px;
+    }
+    .jauge-ligne {
+        gap: var(--s-xs);
+    }
+    .jauge-label {
+        min-width: 70px;
+        font-size: var(--t-sm);
+    }
+}
+
+@media (max-width: 360px) {
+    .role-item {
+        padding: var(--s-xxs) var(--s-xs);
+    }
+    .role-info {
+        gap: var(--s-xs);
+    }
+    .role-emoji {
+        font-size: 1.3rem;
+        width: 24px;
+        height: 24px;
+        flex: 0 0 24px;
+    }
+    .role-desc {
+        display: none;
+    }
+    .btn-moins, .btn-plus {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+    .role-quantite {
+        font-size: var(--t-md);
+    }
+}
+
+/* Feedback tactile amélioré */
+.role-item:active {
+    transform: scale(0.98) translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Espacement pour éviter les clics accidentels */
+.categories-roles {
+    padding-bottom: var(--s-md);
+}
+
+/* ============================================================
+   OPTIMISATIONS RESPONSIVE GLOBALES
+   ============================================================ */
+
+/* Prévention des scrolls horizontaux */
+body {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Conteneurs principaux */
+.ecran {
+    overflow-x: hidden;
+}
+
+.contenu {
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   TAILLES MINIMALES POUR ZONES CLIQUABLES (44x44px)
+   ============================================================ */
+
+/* Boutons de suppression dans la liste des joueurs */
+.btn-supprimer {
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+}
+
+/* Boutons + et - pour les rôles */
+.btn-moins,
+.btn-plus {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* Bouton œil dans l'entête */
+.btn-oeil {
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+}
+
+/* Bouton fiche */
+.btn-fiches {
+    min-height: 44px;
+    padding: var(--s-xs) var(--s-md);
+}
+
+/* Boutons de profil */
+.profil-supprimer {
+    min-width: 40px;
+    min-height: 40px;
+    width: 40px;
+    height: 40px;
+}
+
+/* Boutons dans les modales */
+.btn-oeil-role {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.btn-fermer-modale {
+    min-width: 44px;
+    min-height: 44px;
+    padding: var(--s-xs);
+}
+
+/* Boutons de mode (Manuel/IA) */
+.btn-mode {
+    min-height: 44px;
+}
+
+/* Feedback tactile amélioré - Dupliqué, déjà défini plus haut */
+.role-item:active {
+    transform: scale(0.98) translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ============================================================
+   MEDIA QUERIES RESPONSIVE - OPTIMISATION MOBILE
+   ============================================================ */
+
+/* iPhone SE (320px) - Très petits écrans */
+@media (max-width: 320px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .accueil-content {
+        padding: var(--s-lg) var(--s-xs) max(var(--s-xs), env(safe-area-inset-bottom));
+        gap: var(--s-md);
+    }
+    .accueil-logo-wrap {
+        width: min(65vw, 200px);
+    }
+    #ecran-accueil h1 {
+        font-size: 2.2rem;
+    }
+    .sous-titre {
+        font-size: var(--t-sm);
+    }
+    #ecran-accueil .accueil-action {
+        max-width: 280px;
+        min-height: 52px;
+        padding: var(--s-sm) var(--s-xl);
+        font-size: var(--t-md);
+    }
+    
+    .entete {
+        padding: var(--s-sm) var(--s-xs);
+        gap: var(--s-xs);
+    }
+    .entete h2 {
+        font-size: var(--t-md);
+        padding: 0 5px;
+    }
+    .compteur-tour {
+        font-size: var(--t-xs);
+        padding: var(--s-xxs) var(--s-sm);
+    }
+    
+    .contenu {
+        padding: var(--s-md);
+        gap: var(--s-sm);
+    }
+    
+    .ajout-joueur {
+        gap: var(--s-xs);
+        padding: var(--s-xxs);
+    }
+    .ajout-joueur input {
+        font-size: var(--t-sm);
+        padding: var(--s-sm) var(--s-xs);
+    }
+    .btn-ajouter {
+        flex: 0 0 44px;
+        width: 44px;
+        min-height: 44px;
+        font-size: 1.5rem;
+    }
+    .joueur-item {
+        padding: var(--s-xxs) var(--s-xs) var(--s-xxs) var(--s-sm);
+        gap: var(--s-xs);
+        min-height: 52px;
+    }
+    .joueur-numero {
+        min-width: 1.7rem;
+        height: 1.7rem;
+        font-size: var(--t-xs);
+    }
+    .joueur-nom {
+        font-size: var(--t-md);
+    }
+    .btn-supprimer {
+        width: 40px;
+        height: 40px;
+        font-size: var(--t-sm);
+    }
+    .info-joueurs {
+        font-size: var(--t-sm);
+        padding: var(--s-xxs) var(--s-xs);
+    }
+    #btn-suivant-roles {
+        padding: var(--s-sm) var(--s-xl);
+        font-size: var(--t-md);
+    }
+    
+    #profils-rapides {
+        padding: var(--s-sm) var(--s-xs) var(--s-sm);
+    }
+    .profils-titre {
+        font-size: var(--t-xxs);
+    }
+    .profil-tag {
+        padding: var(--s-xxs) var(--s-xs);
+        font-size: var(--t-xxs);
+    }
+    .profil-supprimer {
+        width: 20px;
+        height: 20px;
+        font-size: 0.6rem;
+    }
+    
+    .mode-selection {
+        gap: var(--s-xxs);
+        margin-bottom: var(--s-sm);
+    }
+    .btn-mode {
+        padding: var(--s-xxs);
+        font-size: var(--t-sm);
+    }
+    .categorie-titre {
+        font-size: var(--t-sm);
+        margin-bottom: var(--s-xs);
+        padding-bottom: var(--s-xxs);
+    }
+    .categorie-role {
+        margin-bottom: var(--s-md);
+        padding: var(--s-xxs);
+    }
+    .role-item {
+        padding: var(--s-xxs) var(--s-xs);
+        margin-bottom: var(--s-xxs);
+    }
+    .role-main {
+        margin-bottom: var(--s-xxs);
+    }
+    .role-info {
+        gap: var(--s-xs);
+    }
+    .role-emoji {
+        font-size: 1.3rem;
+    }
+    .role-nom {
+        font-size: var(--t-sm);
+    }
+    .role-desc {
+        font-size: var(--t-xs);
+        line-height: 1.2;
+        margin-top: var(--s-xxs);
+    }
+    .role-compteur {
+        padding: var(--s-xxs) var(--s-xs);
+    }
+    .btn-moins, .btn-plus {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+    .role-quantite {
+        font-size: var(--t-md);
+    }
+    
+    .jauge-conteneur {
+        padding: var(--s-sm);
+    }
+    .jauge-ligne {
+        gap: var(--s-xxs);
+        margin-bottom: var(--s-xs);
+    }
+    .jauge-label {
+        min-width: 60px;
+        font-size: var(--t-sm);
+    }
+    .jauge-barre-conteneur {
+        height: 14px;
+    }
+    .jauge-pourcentage {
+        min-width: 35px;
+        font-size: var(--t-xs);
+    }
+    .jauge-etat {
+        font-size: var(--t-sm);
+        padding: var(--s-xxs) var(--s-sm);
+        margin-top: var(--s-xs);
+    }
+    
+    .resume-roles {
+        padding: var(--s-sm);
+    }
+    .resume-item {
+        font-size: var(--t-sm);
+        padding: var(--s-xxs) 0;
+    }
+    
+    .carte-joueur-nom {
+        font-size: var(--t-lg);
+        margin-bottom: var(--s-md);
+    }
+    .carte-conteneur {
+        perspective: 1000px;
+        margin: var(--s-sm) auto;
+    }
+    .carte-3d {
+        aspect-ratio: 2.5 / 3.5;
+    }
+    .carte-infos {
+        padding: var(--s-sm) var(--s-xs);
+    }
+    .carte-role-nom {
+        font-size: var(--t-xl);
+        margin-bottom: var(--s-xxs);
+    }
+    .aide-bouton {
+        font-size: var(--t-xs);
+        margin-top: var(--s-xxs);
+    }
+    
+    .phase-nuit, .phase-jour {
+        padding: var(--s-lg);
+    }
+    .phase-emoji {
+        font-size: 2.5rem;
+        margin-bottom: var(--s-sm);
+    }
+    .joueurs-vivants {
+        gap: var(--s-xs);
+        margin-top: var(--s-sm);
+    }
+    .tag-joueur {
+        padding: var(--s-sm) var(--s-xs);
+        font-size: var(--t-sm);
+    }
+    .actions-jeu {
+        gap: var(--s-sm);
+        margin-top: var(--s-sm);
+    }
+    .btn-action {
+        padding: var(--s-sm) var(--s-xs);
+        font-size: var(--t-sm);
+    }
+    
+    .journal-partie {
+        border-radius: var(--b-radius-md);
+    }
+    .journal-header {
+        padding: var(--s-sm) var(--s-xs);
+    }
+    .journal-body {
+        max-height: 50vh;
+        padding: var(--s-sm);
+    }
+    .journal-section-header {
+        padding: var(--s-xxs) var(--s-xs);
+    }
+    .journal-item-new {
+        padding: var(--s-xxs) var(--s-xxs);
+    }
+    
+    .modale {
+        padding: var(--s-md);
+    }
+    .modale-contenu {
+        padding: var(--s-md);
+        max-width: 380px;
+    }
+    .modale-entete h3 {
+        font-size: var(--t-lg);
+    }
+    .modale-entete {
+        padding-bottom: var(--s-sm);
+        margin-bottom: var(--s-sm);
+    }
+    .ligne-role-overview {
+        padding: var(--s-sm);
+        margin-bottom: var(--s-xxs);
+    }
+    .role-revele {
+        font-size: var(--t-sm);
+        padding: var(--s-xxs) var(--s-xs);
+    }
+    .btn-oeil-role {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .fiche-role {
+        padding: var(--s-sm) var(--s-md);
+        margin-bottom: var(--s-md);
+    }
+    
+    .tirage-contenu {
+        padding: var(--s-xxl) var(--s-xxl);
+    }
+    .tirage-emoji {
+        font-size: 3.5rem;
+    }
+}
+
+/* iPhone 12/13/14/15 Mini et Android petits écrans (375px) */
+@media (max-width: 375px) {
+    .accueil-content {
+        padding: var(--s-xxl) var(--s-md) max(var(--s-lg), env(safe-area-inset-bottom));
+    }
+    .accueil-logo-wrap {
+        width: min(70vw, 250px);
+    }
+    #ecran-accueil h1 {
+        font-size: 2.5rem;
+    }
+    .sous-titre {
+        font-size: var(--t-md);
+    }
+    
+    .entete {
+        padding: var(--s-sm) var(--s-md);
+    }
+    .entete h2 {
+        font-size: var(--t-lg);
+    }
+    
+    .contenu {
+        padding: var(--s-lg);
+    }
+    
+    .ajout-joueur input {
+        font-size: var(--t-md);
+        padding: var(--s-sm) var(--s-xs);
+    }
+    .joueur-item {
+        padding: var(--s-sm) var(--s-xs) var(--s-sm) var(--s-sm);
+    }
+    .joueur-numero {
+        min-width: 1.8rem;
+        height: 1.8rem;
+        font-size: var(--t-xs);
+    }
+    .joueur-nom {
+        font-size: var(--t-lg);
+    }
+    
+    .categorie-titre {
+        font-size: var(--t-md);
+    }
+    .role-item {
+        padding: var(--s-sm) var(--s-xs);
+    }
+    .role-emoji {
+        font-size: 1.4rem;
+    }
+    .role-nom {
+        font-size: var(--t-sm);
+    }
+    .role-desc {
+        font-size: var(--t-xs);
+    }
+    .btn-moins, .btn-plus {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .jauge-label {
+        min-width: 70px;
+    }
+    
+    .phase-nuit, .phase-jour {
+        padding: var(--s-lg);
+    }
+    .phase-emoji {
+        font-size: 2.7rem;
+    }
+    .joueurs-vivants {
+        gap: var(--s-xs);
+    }
+    .tag-joueur {
+        padding: var(--s-sm) var(--s-xs);
+        font-size: var(--t-sm);
+    }
+    
+    .modale-contenu {
+        padding: var(--s-lg);
+    }
+    .tirage-contenu {
+        padding: var(--s-xxl) var(--s-xxl);
+    }
+    .tirage-nom {
+        font-size: var(--t-huge);
+    }
+}
+
+/* iPhone 13/14/15 (390px) */
+@media (max-width: 390px) {
+    .accueil-logo-wrap {
+        width: min(72vw, 260px);
+    }
+    #ecran-accueil h1 {
+        font-size: var(--t-huge);
+    }
+    #ecran-accueil .accueil-action {
+        max-width: 300px;
+    }
+    
+    .btn-ajouter {
+        width: 46px;
+        min-height: 46px;
+    }
+    
+    .role-item {
+        padding: var(--s-sm) var(--s-md);
+    }
+    
+    .phase-nuit, .phase-jour {
+        padding: var(--s-lg);
+    }
+    .tag-joueur {
+        padding: var(--s-sm) var(--s-md);
+        font-size: var(--t-sm);
+    }
+    
+    .modale-contenu {
+        max-width: 400px;
+    }
+}
+
+/* iPhone 6/7/8 Plus et Android moyens (414px) */
+@media (max-width: 414px) {
+    .accueil-content {
+        padding: var(--s-xxl) var(--s-lg) max(var(--s-xl), env(safe-area-inset-bottom));
+    }
+    .accueil-logo-wrap {
+        width: min(72vw, 270px);
+    }
+    #ecran-accueil h1 {
+        font-size: 2.8rem;
+    }
+    
+    .entete {
+        padding: var(--s-md) var(--s-lg);
+    }
+    
+    .contenu {
+        padding: var(--s-lg);
+    }
+    
+    .ajout-joueur input {
+        font-size: var(--t-lg);
+        padding: var(--s-sm) var(--s-md);
+    }
+    .joueur-item {
+        padding: var(--s-sm) var(--s-xs) var(--s-sm) var(--s-md);
+    }
+    
+    .categorie-titre {
+        font-size: var(--t-lg);
+    }
+    .role-item {
+        padding: var(--s-sm) var(--s-lg);
+    }
+    .role-emoji {
+        font-size: 1.5rem;
+    }
+    .role-desc {
+        font-size: var(--t-sm);
+    }
+    
+    .jauge-conteneur {
+        padding: var(--s-sm);
+    }
+    .jauge-label {
+        min-width: 80px;
+    }
+    
+    .carte-infos {
+        padding: var(--s-sm) var(--s-lg);
+    }
+    
+    .phase-emoji {
+        font-size: 3rem;
+    }
+    .phase-titre {
+        font-size: var(--t-xl);
+    }
+    
+    .modale-contenu {
+        padding: var(--s-lg);
+        max-width: 420px;
+    }
+    .tirage-contenu {
+        padding: var(--s-xxl) var(--s-xxl);
+    }
+}
+
+/* Standard smartphones (480px) */
+@media (max-width: 480px) {
+    #ecran-accueil h1 {
+        font-size: var(--t-huge);
+    }
+    .sous-titre {
+        font-size: var(--t-xl);
+    }
+    #ecran-accueil .accueil-action {
+        max-width: 320px;
+        min-height: 56px;
+    
+    .entete h2 {
+        font-size: var(--t-xl);
+    }
+    .compteur-tour {
+        padding: var(--s-xs) var(--s-md);
+    }
+    
+    .ajout-joueur input {
+        font-size: var(--t-lg);
+        padding: var(--s-sm) var(--s-md);
+    }
+    .btn-ajouter {
+        width: 48px;
+        min-height: 48px;
+    }
+    .joueur-item {
+        padding: var(--s-sm) var(--s-xs) var(--s-sm) var(--s-md);
+        min-height: 58px;
+    }
+    
+    .categorie-titre {
+        font-size: var(--t-md);
+    }
+    .role-item {
+        padding: var(--s-sm) var(--s-lg);
+        margin-bottom: var(--s-xs);
+    }
+    .role-emoji {
+        font-size: 1.5rem;
+    }
+    .role-desc {
+        font-size: var(--t-sm);
+    }
+    
+    .jauge-conteneur {
+        margin: var(--s-md) 0;
+        padding: var(--s-sm);
+    }
+    .jauge-ligne {
+        gap: var(--s-sm);
+        margin-bottom: var(--s-sm);
+    }
+    .jauge-label {
+        min-width: 90px;
+        font-size: var(--t-md);
+    }
+    
+    .carte-conteneur {
+        margin: var(--s-md) auto;
+    }
+    .carte-3d {
+        aspect-ratio: 3 / 4;
+    }
+    
+    .phase-nuit, .phase-jour {
+        padding: var(--s-lg);
+    }
+    .joueurs-vivants {
+        gap: var(--s-xs);
+    }
+    .tag-joueur {
+        padding: var(--s-sm) var(--s-md);
+        font-size: var(--t-sm);
+    }
+    .actions-jeu {
+        gap: var(--s-md);
+        margin-top: var(--s-md);
+    }
+    
+    .journal-header {
+        padding: var(--s-sm) var(--s-md);
+    }
+    .journal-section-header {
+        padding: var(--s-xxs) var(--s-md);
+    }
+    
+    .modale {
+        padding: var(--s-lg);
+    }
+    .modale-contenu {
+        max-width: 420px;
+        padding: var(--s-lg);
+    }
+    
+    .fiche-role {
+        padding: var(--s-md) var(--s-lg);
+        margin-bottom: var(--s-lg);
+    }
+}
+/* ============================================================
+   REDESIGN JOURNAL DU CONTEUR — GRIMOIRE VIVANT
+   ============================================================ */
+
+/* Layout deux colonnes sur tablette/PC */
+@media (min-width: 768px) {
+    #ecran-jeu .contenu {
+        display: grid;
+        grid-template-columns: 340px 1fr;
+        grid-template-rows: auto;
+        gap: 0;
+        padding: 0;
+        height: calc(100vh - 60px);
+        overflow: hidden;
+    }
+
+    /* Colonne gauche : journal */
+    #ecran-jeu .journal-grimoire {
+        grid-column: 1;
+        grid-row: 1 / 4;
+        overflow-y: auto;
+        border-right: 1px solid rgba(201,168,76,0.2);
+        padding: 1rem 0.8rem;
+        background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(13,26,8,0.6) 100%);
+    }
+
+    /* Colonne droite : action + joueurs + boutons */
+    #ecran-jeu #panneau-phase   { grid-column: 2; grid-row: 1; padding: 1rem 1.2rem 0; }
+    #ecran-jeu #joueurs-vivants { grid-column: 2; grid-row: 2; padding: 0 1.2rem; }
+    #ecran-jeu #actions-jeu     { grid-column: 2; grid-row: 3; padding: 0.5rem 1.2rem 1rem; }
+
+    /* Cacher l'ancien journal-partie sur grand écran */
+    #ecran-jeu .journal-partie { display: none; }
+}
+
+/* Sur mobile : journal en bas comme avant, mais redesigné */
+@media (max-width: 767px) {
+    #ecran-jeu .journal-grimoire { display: none; }
+}
+
+/* ── CONTENEUR DU GRIMOIRE ── */
+.journal-grimoire {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.journal-grimoire-titre {
+    font-family: 'Cinzel', serif;
+    color: var(--c-or);
+    font-size: 0.9rem;
+    text-align: center;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.5rem 0 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.journal-grimoire-titre::before,
+.journal-grimoire-titre::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4));
+}
+.journal-grimoire-titre::after {
+    background: linear-gradient(90deg, rgba(201,168,76,0.4), transparent);
+}
+
+/* ── LIGNE VERTICALE DE PROGRESSION ── */
+.grimoire-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.grimoire-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.65rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg,
+        rgba(201,168,76,0.6) 0%,
+        rgba(201,168,76,0.2) 100%);
+}
+
+/* ── CHAPITRE (Nuit X / Jour X) ── */
+.grimoire-chapitre {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+/* Gros cercle marqueur */
+.grimoire-chapitre-marqueur {
+    position: absolute;
+    left: -2rem;
+    top: 0.6rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    border: 2px solid var(--c-or);
+    background: #0d1a08;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    z-index: 1;
+    transition: all 0.3s;
+}
+
+.grimoire-chapitre.termine .grimoire-chapitre-marqueur {
+    background: rgba(107,175,107,0.3);
+    border-color: #6BAF6B;
+    box-shadow: 0 0 8px rgba(107,175,107,0.4);
+}
+.grimoire-chapitre.en-cours .grimoire-chapitre-marqueur {
+    background: rgba(201,168,76,0.2);
+    border-color: var(--c-or);
+    box-shadow: 0 0 10px rgba(201,168,76,0.5);
+    animation: pulseChapitre 2s ease-in-out infinite;
+}
+.grimoire-chapitre.avenir .grimoire-chapitre-marqueur {
+    background: rgba(255,255,255,0.03);
+    border-color: rgba(201,168,76,0.25);
+    opacity: 0.5;
+}
+
+@keyframes pulseChapitre {
+    0%, 100% { box-shadow: 0 0 6px rgba(201,168,76,0.4); }
+    50% { box-shadow: 0 0 14px rgba(201,168,76,0.7); }
+}
+
+/* En-tête du chapitre (cliquable) */
+.grimoire-chapitre-header {
+    cursor: pointer;
+    padding: 0.55rem 0.7rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+    user-select: none;
+}
+.grimoire-chapitre-header:hover { background: rgba(201,168,76,0.06); }
+
+.grimoire-chapitre-titre {
+    font-family: 'Cinzel', serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.grimoire-chapitre.termine  .grimoire-chapitre-titre { color: #6BAF6B; }
+.grimoire-chapitre.en-cours .grimoire-chapitre-titre { color: var(--c-or); }
+.grimoire-chapitre.avenir   .grimoire-chapitre-titre { color: rgba(201,168,76,0.35); }
+
+.grimoire-chapitre-sous-titre {
+    font-size: 0.72rem;
+    color: rgba(212,180,131,0.55);
+    font-style: italic;
+    margin-top: 0.1rem;
+    padding-left: 1.2rem;
+}
+
+.grimoire-chapitre-chevron {
+    margin-left: auto;
+    font-size: 0.6rem;
+    opacity: 0.6;
+    transition: transform 0.25s;
+}
+.grimoire-chapitre-chevron.ouvert { transform: rotate(180deg); }
+
+/* Corps du chapitre */
+.grimoire-chapitre-body {
+    display: none;
+    padding: 0.3rem 0 0.5rem 0.7rem;
+    border-left: 1px dashed rgba(201,168,76,0.15);
+    margin-left: 0.3rem;
+}
+.grimoire-chapitre-body.ouvert { display: block; }
+
+/* ── CARTE D'ACTION (dans le corps du chapitre) ── */
+.grimoire-action {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.45rem 0.5rem;
+    margin-bottom: 0.3rem;
+    border-radius: 6px;
+    transition: background 0.2s;
+    position: relative;
+}
+
+/* Petit tiret connecteur */
+.grimoire-action::before {
+    content: '├─';
+    position: absolute;
+    left: -0.7rem;
+    top: 0.45rem;
+    font-size: 0.6rem;
+    color: rgba(201,168,76,0.25);
+    letter-spacing: -2px;
+}
+.grimoire-action:last-child::before { content: '└─'; }
+
+.grimoire-action.termine  { background: rgba(107,175,107,0.06); }
+.grimoire-action.en-cours { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); }
+.grimoire-action.avenir   { opacity: 0.45; }
+
+.grimoire-action-icone {
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+    filter: drop-shadow(0 0 3px rgba(0,0,0,0.5));
+}
+
+.grimoire-action-contenu { flex: 1; min-width: 0; }
+
+.grimoire-action-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+.grimoire-action.termine  .grimoire-action-nom { color: rgba(107,175,107,0.8); }
+.grimoire-action.en-cours .grimoire-action-nom { color: var(--c-or); }
+.grimoire-action.avenir   .grimoire-action-nom { color: rgba(212,180,131,0.5); }
+
+.grimoire-action-detail {
+    font-size: 0.7rem;
+    color: rgba(212,180,131,0.6);
+    font-style: italic;
+    margin-top: 0.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.grimoire-action-statut {
+    font-size: 0.65rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.grimoire-action.termine  .grimoire-action-statut { color: #6BAF6B; }
+.grimoire-action.en-cours .grimoire-action-statut { color: var(--c-or); }
+.grimoire-action.avenir   .grimoire-action-statut { color: rgba(201,168,76,0.3); }
+
+/* ── REDESIGN DU JOURNAL PLIABLE (mobile) ── */
+.journal-partie {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(13,26,8,0.5));
+}
+
+.journal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: background 0.2s;
+}
+.journal-header:hover { background: rgba(201,168,76,0.06); }
+
+.journal-header-titre {
+    font-family: 'Cinzel', serif;
+    color: var(--c-or);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.journal-body { max-height: 55vh; overflow-y: auto; padding: 0.8rem; }
+
+/* Sections dans le journal mobile — style grimoire aussi */
+.journal-section {
+    margin-bottom: 0.4rem;
+    border-radius: 8px;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+}
+
+.journal-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.4rem 0.6rem;
+    background: rgba(201,168,76,0.08);
+    border-radius: 6px;
+    cursor: pointer;
+    border-left: 3px solid rgba(201,168,76,0.4);
+    transition: background 0.2s;
+}
+.journal-section-header:hover { background: rgba(201,168,76,0.15); }
+
+.journal-section-titre {
+    font-family: 'Cinzel', serif;
+    color: var(--c-or);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.journal-section-body { padding: 0.3rem 0.3rem 0.3rem 0.8rem; }
+
+.journal-item-new {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.35rem 0.3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    align-items: flex-start;
+}
+
+.journal-item-point {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--c-or);
+    margin-top: 6px;
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+.journal-item-new.actif .journal-item-point {
+    opacity: 1;
+    box-shadow: 0 0 6px var(--c-or);
+    width: 8px; height: 8px;
+}
+
+.journal-item-titre {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: var(--c-blanc-casse);
+    font-weight: 600;
+    line-height: 1.3;
+}
+.journal-item-new.actif .journal-item-titre { color: var(--c-or); }
+
+.journal-item-detail {
+    font-size: 0.72rem;
+    color: rgba(212,180,131,0.65);
+    font-style: italic;
+    line-height: 1.3;
+    margin-top: 0.1rem;
+}
+
+.logo-accueil {
+    width: 160px;
+    height: 160px;
+    max-width: 60vw;
+    max-height: 60vw;
+    object-fit: contain;
+    border-radius: 24px;
+    margin-bottom: 1rem;
+    animation: lueur 2s ease-in-out infinite;
+}
