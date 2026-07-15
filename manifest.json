@@ -2,58 +2,48 @@
   "name": "Clair de Lune - Le Conteur des Loups-Garous",
   "short_name": "Clair de Lune",
   "description": "Application de conteur pour animer vos parties de Loups-Garous de Thiercelieux",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "/clair-de-lune/index.html",
+  "scope": "/clair-de-lune/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#2D4A22",
   "theme_color": "#2D4A22",
   "lang": "fr",
+  "id": "/clair-de-lune/",
   "icons": [
     {
-      "src": "./images/icon-72.png",
+      "src": "/clair-de-lune/images/icon-72.png",
       "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "./images/icon-96.png",
+      "src": "/clair-de-lune/images/icon-96.png",
       "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "./images/icon-144.png",
+      "src": "/clair-de-lune/images/icon-144.png",
       "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "./images/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./images/icon-192.png",
+      "src": "/clair-de-lune/images/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "./images/icon-192.png",
+      "src": "/clair-de-lune/images/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "./images/icon-512.png",
+      "src": "/clair-de-lune/images/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "./images/icon-512.png",
+      "src": "/clair-de-lune/images/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
