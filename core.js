@@ -136,6 +136,97 @@ let etat = {
     victimeLoupVoyou: null,
     cibleVoleur: null
 };
+
+// Copie vierge de l'état, capturée une seule fois au chargement du script,
+// utilisée pour repartir sur une base propre lors d'une "Nouvelle Partie".
+const ETAT_INITIAL_JSON = JSON.stringify(etat);
+
+function reinitialiserEtat() {
+    const frais = JSON.parse(ETAT_INITIAL_JSON);
+    Object.keys(etat).forEach(cle => delete etat[cle]);
+    Object.assign(etat, frais);
+}
+
+// ============================================
+// SAUVEGARDE & REPRISE DE PARTIE (anti-refresh)
+// ============================================
+const CLE_SAUVEGARDE_PARTIE = 'clairdelune-partie-active';
+
+function ecranActifId() {
+    const actif = document.querySelector('.ecran.actif');
+    return actif ? actif.id : 'ecran-accueil';
+}
+
+function sauvegarderPartie() {
+    try {
+        const ecran = ecranActifId();
+        if (ecran === 'ecran-accueil') return;
+        localStorage.setItem(CLE_SAUVEGARDE_PARTIE, JSON.stringify({ ecran, etat }));
+    } catch (e) {
+        console.warn('Impossible de sauvegarder la partie en cours.');
+    }
+}
+
+function effacerPartieSauvegardee() {
+    try { localStorage.removeItem(CLE_SAUVEGARDE_PARTIE); } catch (e) {}
+}
+
+function nouvellePartie() {
+    reinitialiserEtat();
+    effacerPartieSauvegardee();
+    allerVers('ecran-joueurs');
+}
+
+function restaurerPartieSiExistante() {
+    let sauvegarde;
+    try {
+        const data = localStorage.getItem(CLE_SAUVEGARDE_PARTIE);
+        if (!data) return;
+        sauvegarde = JSON.parse(data);
+    } catch (e) { return; }
+    if (!sauvegarde || !sauvegarde.etat || !sauvegarde.ecran) return;
+    const cible = document.getElementById(sauvegarde.ecran);
+    if (!cible) { effacerPartieSauvegardee(); return; }
+
+    const reprendre = confirm('Une partie était en cours. Voulez-vous la reprendre ?');
+    if (!reprendre) { effacerPartieSauvegardee(); return; }
+
+    Object.keys(etat).forEach(cle => delete etat[cle]);
+    Object.assign(etat, sauvegarde.etat);
+
+    document.querySelectorAll('.ecran').forEach(e => e.classList.remove('actif'));
+    cible.classList.add('actif');
+    window.scrollTo(0, 0);
+
+    switch (sauvegarde.ecran) {
+        case 'ecran-joueurs': afficherJoueurs(); break;
+        case 'ecran-roles': afficherRoles(); break;
+        case 'ecran-attribution':
+            if (etat.rolesAttribues && etat.rolesAttribues.length > 0) {
+                afficherCarteAttribution();
+            } else {
+                demarrerAttribution();
+            }
+            break;
+        case 'ecran-jeu':
+            if (!etat.joueursVivants || etat.joueursVivants.length === 0) {
+                // La partie n'avait pas encore réellement démarré (ex: tirage du Comédien en cours)
+                demarrerJeu();
+            } else {
+                afficherJournal();
+                if (etat.phase === 'jour') traiterProchainMort();
+                else afficherEtapeNuit();
+            }
+            break;
+    }
+}
+
+// Sauvegarde continue pendant que la partie avance (couvre toutes les
+// actions de nuit/jour sans avoir à modifier chaque fonction du jeu).
+setInterval(() => {
+    if (ecranActifId() !== 'ecran-accueil') sauvegarderPartie();
+}, 2000);
+
 function setCompteur(texte, visible) {
     const compteur = document.getElementById('compteur-tour');
     if (!compteur) return;
@@ -158,6 +249,8 @@ function allerVers(ecranId) {
     if (ecranId === 'ecran-roles') afficherRoles();
     if (ecranId === 'ecran-attribution') demarrerAttribution();
     if (ecranId === 'ecran-jeu') demarrerJeu();
+
+    sauvegarderPartie();
 }
 
 // ============================================
