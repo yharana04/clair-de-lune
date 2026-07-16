@@ -169,6 +169,10 @@
 /* ============================================================
    BASE
    ============================================================ */
+html {
+    overscroll-behavior-y: contain;
+}
+
 body {
     font-family: var(--f-primary);
     font-size: var(--t-md);
@@ -182,6 +186,7 @@ body {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
 }
 
 /* Prévention du zoom sur input focus */
