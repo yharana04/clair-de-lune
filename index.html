@@ -33,7 +33,7 @@
             </div>
             <h1>Clair de Lune</h1>
             <p class="sous-titre">Le Conteur des Loups-Garous</p>
-            <button class="btn btn-principal" onclick="allerVers('ecran-joueurs')">Nouvelle Partie</button>
+            <button class="btn btn-principal" onclick="nouvellePartie()">Nouvelle Partie</button>
         </div>
     </section>
 
@@ -211,6 +211,25 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.log('SW non enregistré:', err));
     });
 }
+
+// Reprise automatique de la partie en cours après un rafraîchissement
+window.addEventListener('load', () => {
+    restaurerPartieSiExistante();
+});
+
+// Limite le "tirer pour actualiser" accidentel sur mobile (cause fréquente
+// du rafraîchissement involontaire pendant une partie).
+let toucheDepartY = 0;
+document.addEventListener('touchstart', (e) => {
+    toucheDepartY = e.touches[0].clientY;
+}, { passive: true });
+document.addEventListener('touchmove', (e) => {
+    const enHautDePage = window.scrollY === 0;
+    const tireVersLeBas = e.touches[0].clientY > toucheDepartY;
+    if (enHautDePage && tireVersLeBas) {
+        e.preventDefault();
+    }
+}, { passive: false });
 </script>
 
 </body>
